@@ -1,0 +1,41 @@
+# Circuit Quantum Electrodynamics
+
+**Circuit QED (cQED)** is the microwave analogue of cavity QED: a superconducting qubit plays
+the role of an artificial atom, and a microwave resonator (coplanar waveguide or 3D cavity)
+plays the role of the optical cavity. Fabricated on a chip, cQED systems are engineered to
+reach the **strong coupling regime** where the coherent qubit–photon interaction rate $g$
+exceeds all decoherence rates.
+
+## Why cQED?
+
+| Parameter | Optical cavity QED | Circuit QED |
+|---|---|---|
+| Coupling $g/2\pi$ | ~10 MHz | ~100–500 MHz |
+| $g/\kappa$ | 1–10 | 10–1000 |
+| Temperature | Room / mK (ions) | ~20 mK |
+| Scalability | Low | High (chip-scale) |
+
+The large coupling arises because the vacuum electric field in a superconducting resonator can be
+enormous ($\sim 0.1\,\text{V/m}$) and the artificial-atom dipole moment is engineered to be large.
+
+## Key Energy Scales
+
+The physics is governed by four energy scales:
+
+$$
+\omega_r,\quad \omega_q,\quad g,\quad \kappa,\quad \gamma
+$$
+
+where $\omega_r$ ($\omega_q$) is the resonator (qubit) angular frequency, $g$ the vacuum Rabi
+coupling, $\kappa$ the resonator decay rate, and $\gamma$ the qubit relaxation rate. The
+hierarchy $g \gg \kappa, \gamma$ defines strong coupling.
+
+## Roadmap of This Site
+
+This site derives all key cQED results from first principles:
+
+1. **Jaynes–Cummings** — the fundamental qubit-cavity Hamiltonian
+2. **Dispersive limit** — off-resonant effective Hamiltonian and QND readout
+3. **Transmon** — circuit quantisation and why charge noise is suppressed
+4. **Input-output theory** — how signals enter and leave the cavity
+5. **Lindblad equation** — $T_1$, $T_2$, and decoherence channels

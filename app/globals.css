@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+:root {
+  --bg: #0d1117;
+  --bg-surface: #161b22;
+  --bg-card: #1c2128;
+  --border: #30363d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-dim: #1f3a5f;
+  --green: #3fb950;
+  --purple: #bc8cff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.prose h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.prose h2 {
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-family: system-ui, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.prose h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 1.75rem;
+}
+
+.prose p { color: #c9d1d9; margin-bottom: 1rem; }
+.prose strong { color: var(--text); font-weight: 600; }
+
+.prose .katex-display {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.prose .katex-display > .katex { font-size: 1.1em; }
+.prose .katex { color: var(--purple); }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.875rem;
+}
+
+.prose th {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.prose td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  color: #c9d1d9;
+}
+
+.prose tr:hover td { background: var(--bg-card); }

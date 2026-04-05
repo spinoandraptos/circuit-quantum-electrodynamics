@@ -1,0 +1,62 @@
+# Transmon Qubit
+
+The **transmon** is the dominant superconducting qubit architecture. It is a modified
+Cooper-pair box shunted by a large capacitance $C_B$, designed to suppress sensitivity
+to offset charge noise while retaining anharmonicity.
+
+## Cooper-Pair Box Hamiltonian
+
+Starting from the Josephson circuit, quantise the phase $\hat{\phi}$ and charge $\hat{n}$
+(number of Cooper pairs transferred) with $[\hat{n}, e^{i\hat{\phi}}] = e^{i\hat{\phi}}$:
+
+$$
+\hat{H}_\text{CPB} = 4E_C(\hat{n} - n_g)^2 - E_J\cos\hat{\phi}
+$$
+
+where:
+
+$$
+E_C = \frac{e^2}{2(C_J + C_B)}, \qquad E_J = \frac{\Phi_0 I_c}{2\pi}
+$$
+
+$n_g = C_g V_g / 2e$ is the dimensionless gate charge and $I_c$ is the critical current.
+
+## Transmon Regime
+
+Adding the shunt capacitor $C_B \gg C_J$ reduces $E_C$ while $E_J$ is tuned independently.
+In the limit $E_J \gg E_C$:
+
+$$
+\hat{H} \approx -E_J\cos\hat{\phi} + 4E_C\hat{n}^2
+$$
+
+Expanding around $\phi = 0$ and quantising as a harmonic oscillator with perturbative
+anharmonicity gives the transmon frequency:
+
+$$
+\boxed{\omega_q \approx \sqrt{8 E_J E_C} - E_C}
+$$
+
+## Anharmonicity
+
+The transmon is not a harmonic oscillator; the energy levels are not equally spaced.
+The **anharmonicity** is:
+
+$$
+\alpha = \omega_{12} - \omega_{01} \approx -E_C
+$$
+
+A typical transmon has $E_C/h \sim 200\,\text{MHz}$ and $E_J/h \sim 20\,\text{GHz}$,
+giving $\alpha/2\pi \approx -200\,\text{MHz}$ — large enough to address individual
+transitions but small compared to $\omega_q$.
+
+## Charge Dispersion Suppression
+
+The sensitivity to $n_g$ (charge noise) falls exponentially in $E_J/E_C$:
+
+$$
+\epsilon_m \propto E_C \left(\frac{E_J}{2E_C}\right)^{m+1/2} e^{-\sqrt{8E_J/E_C}}
+$$
+
+At $E_J/E_C \gtrsim 50$, charge dispersion is negligible, which is why transmons
+are so much more coherent than charge qubits.

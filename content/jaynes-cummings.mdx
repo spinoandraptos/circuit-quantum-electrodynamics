@@ -1,0 +1,61 @@
+# Jaynes–Cummings Model
+
+The Jaynes–Cummings model describes a two-level system (qubit) coupled to a single
+mode of the electromagnetic field. In circuit QED, the qubit is a superconducting
+artificial atom and the field mode lives inside a microwave resonator.
+
+## The Full Hamiltonian
+
+The system Hamiltonian has three parts:
+
+$$
+\hat{H} = \hat{H}_\text{field} + \hat{H}_\text{qubit} + \hat{H}_\text{int}
+$$
+
+**Resonator (field mode)**:
+
+$$
+\hat{H}_\text{field} = \hbar\omega_r \left(\hat{a}^\dagger \hat{a} + \frac{1}{2}\right)
+$$
+
+where $\hat{a}^\dagger, \hat{a}$ are photon creation/annihilation operators with $[\hat{a}, \hat{a}^\dagger]=1$.
+
+**Qubit**:
+
+$$
+\hat{H}_\text{qubit} = \frac{\hbar\omega_q}{2}\hat{\sigma}_z
+$$
+
+**Dipole interaction** (in the rotating-wave approximation):
+
+$$
+\hat{H}_\text{int} = \hbar g \left(\hat{a}^\dagger \hat{\sigma}_- + \hat{a}\,\hat{\sigma}_+\right)
+$$
+
+The coupling constant $g$ is set by the overlap of the vacuum electric field with the
+qubit's dipole moment. The full **Jaynes–Cummings Hamiltonian** is:
+
+$$
+\boxed{\hat{H}_\text{JC} = \hbar\omega_r \hat{a}^\dagger\hat{a} + \frac{\hbar\omega_q}{2}\hat{\sigma}_z + \hbar g\!\left(\hat{a}^\dagger\hat{\sigma}_- + \hat{a}\,\hat{\sigma}_+\right)}
+$$
+
+## Dressed States (Eigenstates)
+
+In the single-excitation subspace $\{|g,1\rangle,|e,0\rangle\}$, diagonalisation gives the **dressed states**:
+
+$$
+|\pm,n\rangle = \frac{1}{\sqrt{2}}\!\left(|g,n{+}1\rangle \pm |e,n\rangle\right)
+$$
+
+with eigenvalues:
+
+$$
+E_{\pm,n} = \hbar\omega_r\!\left(n+\frac{1}{2}\right) \pm \frac{\hbar}{2}\sqrt{\Delta^2 + 4g^2(n+1)}
+$$
+
+where $\Delta = \omega_q - \omega_r$ is the **detuning**.
+
+## Vacuum Rabi Splitting
+
+On resonance ($\Delta = 0$), the two dressed-state energies split by $2\hbar g$. This is the
+**vacuum Rabi splitting** — directly observable as two peaks in the cavity transmission spectrum.

@@ -1,0 +1,57 @@
+# Input-Output Theory
+
+Input-output theory describes how signals propagate into and out of a quantum system
+coupled to external transmission lines. It is the theoretical backbone of microwave
+readout in cQED.
+
+## System-Bath Hamiltonian
+
+Model the resonator as system $S$, coupled to a continuum of bath modes $\hat{b}_\omega$:
+
+$$
+\hat{H} = \hat{H}_S + \int_0^\infty d\omega\,\hbar\omega\,\hat{b}_\omega^\dagger\hat{b}_\omega
++ i\hbar\sqrt{\frac{\kappa}{2\pi}}\int_0^\infty d\omega\!\left(\hat{b}_\omega^\dagger\hat{a} - \hat{a}^\dagger\hat{b}_\omega\right)
+$$
+
+## Quantum Langevin Equation
+
+In the Markov approximation, the intracavity field obeys:
+
+$$
+\dot{\hat{a}} = -\left(i\omega_r + \frac{\kappa}{2}\right)\hat{a} + \sqrt{\kappa}\,\hat{a}_\text{in}(t)
+$$
+
+where $\hat{a}_\text{in}$ is the input field operator satisfying $[\hat{a}_\text{in}(t), \hat{a}_\text{in}^\dagger(t')] = \delta(t-t')$.
+
+## Input-Output Relation
+
+The fundamental boundary condition:
+
+$$
+\boxed{\hat{a}_\text{out}(t) = \hat{a}_\text{in}(t) - \sqrt{\kappa}\,\hat{a}(t)}
+$$
+
+In the frequency domain, this gives the **transmission coefficient**:
+
+$$
+t(\omega) = \frac{\kappa}{\kappa/2 - i(\omega - \omega_r)}
+$$
+
+and the **reflection coefficient** (single-sided coupling):
+
+$$
+r(\omega) = \frac{\kappa/2 + i(\omega - \omega_r)}{\kappa/2 - i(\omega - \omega_r)}
+$$
+
+## Purcell Effect
+
+When the qubit is coupled to the resonator, it acquires an additional decay channel via
+the resonator's port — the **Purcell decay rate**:
+
+$$
+\gamma_P = \frac{g^2\kappa}{\Delta^2 + (\kappa/2)^2} \approx \frac{g^2}{\Delta^2}\kappa = \left(\frac{g}{\Delta}\right)^2\!\kappa
+$$
+
+In the dispersive limit this equals $\chi^2/\kappa$. Purcell filters — bandpass structures
+at the cavity frequency — are used in practice to suppress $\gamma_P$ without sacrificing
+readout bandwidth.

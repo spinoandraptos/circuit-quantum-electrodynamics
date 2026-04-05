@@ -1,0 +1,57 @@
+# Dispersive Limit
+
+When the qubit–resonator detuning $\Delta = \omega_q - \omega_r$ is large compared to the
+coupling $g$ (i.e. $|g/\Delta| \ll 1$), the system enters the **dispersive regime**.
+Direct photon–qubit exchange is suppressed; instead, each subsystem acquires a small
+frequency shift that depends on the state of the other.
+
+## Dispersive Transformation
+
+Apply the unitary transformation:
+
+$$
+\hat{U} = \exp\!\left[\frac{g}{\Delta}\!\left(\hat{a}^\dagger\hat{\sigma}_- - \hat{a}\,\hat{\sigma}_+\right)\right]
+$$
+
+Expanding to second order in $\lambda = g/\Delta$:
+
+$$
+\hat{H}_\text{disp} = \hat{U}\hat{H}_\text{JC}\hat{U}^\dagger \approx \hbar\tilde{\omega}_r\hat{a}^\dagger\hat{a} + \frac{\hbar\tilde{\omega}_q}{2}\hat{\sigma}_z + \hbar\chi\,\hat{a}^\dagger\hat{a}\,\hat{\sigma}_z
+$$
+
+## The Dispersive Hamiltonian
+
+$$
+\boxed{\hat{H}_\text{disp} = \hbar\!\left(\omega_r + \chi\hat{\sigma}_z\right)\!\hat{a}^\dagger\hat{a} + \frac{\hbar\tilde{\omega}_q}{2}\hat{\sigma}_z}
+$$
+
+The **dispersive shift** is:
+
+$$
+\chi = \frac{g^2}{\Delta}
+$$
+
+(For the transmon, the full expression also includes a correction from higher levels.)
+
+## Physical Interpretation
+
+The resonator frequency shifts by $\pm\chi$ depending on the qubit state:
+
+$$
+\omega_r^{(g)} = \omega_r - \chi, \qquad \omega_r^{(e)} = \omega_r + \chi
+$$
+
+This **qubit-state-dependent pull** of the resonator is the basis of **dispersive readout**:
+a microwave probe tone reveals the qubit state via the phase of the reflected signal,
+without absorbing a real photon — a QND (quantum non-demolition) measurement.
+
+## Validity Condition
+
+The dispersive approximation breaks down when the photon number $\bar{n}$ approaches the
+**critical photon number**:
+
+$$
+n_\text{crit} = \frac{\Delta^2}{4g^2}
+$$
+
+Above $n_\text{crit}$ the system re-enters the resonant regime and the qubit is dressed again.

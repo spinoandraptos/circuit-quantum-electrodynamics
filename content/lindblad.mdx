@@ -1,0 +1,55 @@
+# Lindblad Master Equation
+
+Open quantum systems — those coupled to an environment — cannot be described by a
+pure-state Schrödinger equation. The **Lindblad (GKSL) master equation** gives the most
+general Markovian evolution of the density matrix $\hat{\rho}$.
+
+## The Master Equation
+
+$$
+\boxed{\dot{\hat{\rho}} = -\frac{i}{\hbar}[\hat{H}, \hat{\rho}] + \sum_k \gamma_k \mathcal{D}[\hat{L}_k]\hat{\rho}}
+$$
+
+where the **Lindblad dissipator** acts as:
+
+$$
+\mathcal{D}[\hat{L}]\hat{\rho} = \hat{L}\hat{\rho}\hat{L}^\dagger - \frac{1}{2}\hat{L}^\dagger\hat{L}\hat{\rho} - \frac{1}{2}\hat{\rho}\hat{L}^\dagger\hat{L}
+$$
+
+## Jump Operators in cQED
+
+| Process | Jump operator $\hat{L}_k$ | Rate $\gamma_k$ |
+|---|---|---|
+| Qubit relaxation ($T_1$) | $\hat{\sigma}_-$ | $\gamma_1 = 1/T_1$ |
+| Pure dephasing | $\hat{\sigma}_z/2$ | $\gamma_\phi$ |
+| Resonator decay | $\hat{a}$ | $\kappa$ |
+| Thermal excitation | $\hat{\sigma}_+$ | $\gamma_1 \bar{n}_\text{th}$ |
+
+## Bloch Equation Derivation
+
+Tracing out the resonator and applying the Lindblad equation in the qubit subspace yields
+the **optical Bloch equations** for $\langle\hat{\sigma}_\pm\rangle$ and $\langle\hat{\sigma}_z\rangle$:
+
+$$
+\frac{d\langle\hat{\sigma}_-\rangle}{dt} = -\frac{1}{T_2}\langle\hat{\sigma}_-\rangle - i\frac{\Omega}{2}\langle\hat{\sigma}_z\rangle
+$$
+
+$$
+\frac{d\langle\hat{\sigma}_z\rangle}{dt} = -\frac{\langle\hat{\sigma}_z\rangle - \langle\hat{\sigma}_z\rangle_\text{eq}}{T_1} + i\Omega(\langle\hat{\sigma}_-\rangle - \langle\hat{\sigma}_+\rangle)
+$$
+
+## Coherence Times
+
+The two fundamental decoherence times are:
+
+$$
+\frac{1}{T_1} = \gamma_1 = \Gamma_\downarrow + \Gamma_\uparrow
+$$
+
+$$
+\frac{1}{T_2} = \frac{1}{2T_1} + \frac{1}{T_\phi}
+$$
+
+where $T_\phi = 1/\gamma_\phi$ is the **pure dephasing time**. Note $T_2 \leq 2T_1$ always,
+with equality when pure dephasing is absent. In state-of-the-art transmons,
+$T_1, T_2 \sim 100\,\mu\text{s}$.
