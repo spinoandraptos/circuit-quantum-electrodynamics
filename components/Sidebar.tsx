@@ -70,7 +70,7 @@ export default function Sidebar() {
             fontWeight: 700,
           }}
         >
-          Topics
+          Theory
         </div>
 
         {topics.map((topic) => {
@@ -113,7 +113,76 @@ export default function Sidebar() {
             </Link>
           );
         })}
+
+        {/* --- INTERACTIVE SECTION --- */}
+        <div
+          style={{
+            padding: "1.25rem 1rem 0.5rem",
+            fontSize: "0.6rem",
+            fontFamily: "system-ui, sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            color: "var(--text-muted)",
+            fontWeight: 700,
+          }}
+        >
+          Interactive
+        </div>
+        <Link
+          href="/interactive/calculator"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "0.4rem 0.75rem",
+            margin: "0 0.5rem 0.15rem",
+            textDecoration: "none",
+            fontFamily: "system-ui, sans-serif",
+            fontSize: "0.8rem",
+            fontWeight: pathname === "/interactive/calculator" ? 700 : 400,
+            color: pathname === "/interactive/calculator" ? "var(--text)" : "var(--text-body)",
+            background: pathname === "/interactive/calculator" ? "var(--accent)" : "transparent",
+            border: pathname === "/interactive/calculator" ? "1.5px solid var(--accent-dark)" : "1.5px solid transparent",
+            borderRadius: "8px",
+          }}
+        >
+          Calculator
+        </Link>
+
+        {/* --- RESOURCES SECTION --- */}
+        <div
+          style={{
+            padding: "1.25rem 1rem 0.5rem",
+            fontSize: "0.6rem",
+            fontFamily: "system-ui, sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            color: "var(--text-muted)",
+            fontWeight: 700,
+          }}
+        >
+          Resources
+        </div>
+        <Link 
+          href="/resources/links" 
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "0.4rem 0.75rem",
+            margin: "0 0.5rem 0.15rem",
+            textDecoration: "none",
+            fontFamily: "system-ui, sans-serif",
+            fontSize: "0.8rem",
+            fontWeight: pathname === "/resources/links" ? 700 : 400,
+            color: pathname === "/resources/links" ? "var(--text)" : "var(--text-body)",
+            background: pathname === "/resources/links" ? "var(--accent)" : "transparent",
+            border: pathname === "/resources/links" ? "1.5px solid var(--accent-dark)" : "1.5px solid transparent",
+            borderRadius: "8px",
+          }}
+        >
+          Papers & Links
+        </Link>
       </nav>
+      
 
       {/* Footer */}
       <div
