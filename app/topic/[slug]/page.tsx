@@ -1,4 +1,4 @@
-import { topics } from "@/content/topics";
+import { topics, contentMap } from "@/content/topics";
 import { notFound } from "next/navigation";
 import MDXContent from "@/components/MDXContent";
 
@@ -28,6 +28,9 @@ export default async function TopicPage({
   const topic = topics.find((t) => t.slug === slug);
   if (!topic) notFound();
 
+  const loader = contentMap[slug];
+  if (!loader) notFound();
+
   const currentIndex = topics.findIndex((t) => t.slug === slug);
   const prev = currentIndex > 0 ? topics[currentIndex - 1] : null;
   const next = currentIndex < topics.length - 1 ? topics[currentIndex + 1] : null;
@@ -35,30 +38,116 @@ export default async function TopicPage({
   return (
     <div>
       {/* Breadcrumb */}
-      <div style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.75rem", color: "var(--muted)", marginBottom: "2rem", letterSpacing: "0.04em" }}>
+      <div
+        style={{
+          fontFamily: "system-ui, sans-serif",
+          fontSize: "0.7rem",
+          fontWeight: 600,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "var(--text-muted)",
+          marginBottom: "1rem",
+        }}
+      >
         Circuit QED
-        <span style={{ margin: "0 0.5rem", opacity: 0.5 }}>›</span>
-        <span style={{ color: "var(--accent)" }}>{topic.title}</span>
+        <span style={{ margin: "0 0.4rem", opacity: 0.5 }}>›</span>
+        <span style={{ color: "var(--text)" }}>{topic.title}</span>
       </div>
 
-      {/* MDX Content — imported client-side to avoid createContext SSR error */}
-      <MDXContent slug={slug} />
+      {/* Topic tag */}
+      <div style={{ marginBottom: "0.25rem" }}>
+        <span className="tag">{topic.description}</span>
+      </div>
+
+      {/* MDX Content */}
+      <article className="prose">
+        <MDXContent slug={slug} />
+      </article>
 
       {/* Prev / Next navigation */}
-      <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "4rem", paddingTop: "1.5rem", borderTop: "1px solid var(--border)", gap: "1rem", fontFamily: "system-ui, sans-serif" }}>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "4rem",
+          paddingTop: "1.25rem",
+          borderTop: "1.5px solid var(--border-soft)",
+          gap: "0.75rem",
+          fontFamily: "system-ui, sans-serif",
+        }}
+      >
         {prev ? (
-          <a href={`/topic/${prev.slug}`} style={{ display: "flex", flexDirection: "column", gap: "0.2rem", textDecoration: "none", padding: "0.75rem 1rem", border: "1px solid var(--border)", borderRadius: "8px", flex: 1, background: "var(--bg-surface)", transition: "border-color 0.15s" }}>
-            <span style={{ fontSize: "0.7rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>← Previous</span>
-            <span style={{ fontSize: "0.9rem", color: "var(--text)", fontWeight: 500 }}>{prev.title}</span>
+          <a
+            href={`/topic/${prev.slug}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.15rem",
+              textDecoration: "none",
+              padding: "0.75rem 1rem",
+              border: "1.5px solid var(--border)",
+              borderRadius: "10px",
+              flex: 1,
+              background: "var(--bg)",
+              boxShadow: "var(--shadow)",
+              transition: "box-shadow 0.15s",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                color: "var(--text-muted)",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              ← Previous
+            </span>
+            <span style={{ fontSize: "0.875rem", color: "var(--text)", fontWeight: 700 }}>
+              {prev.title}
+            </span>
           </a>
-        ) : <div style={{ flex: 1 }} />}
+        ) : (
+          <div style={{ flex: 1 }} />
+        )}
 
         {next ? (
-          <a href={`/topic/${next.slug}`} style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.2rem", textDecoration: "none", padding: "0.75rem 1rem", border: "1px solid var(--border)", borderRadius: "8px", flex: 1, background: "var(--bg-surface)", transition: "border-color 0.15s" }}>
-            <span style={{ fontSize: "0.7rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Next →</span>
-            <span style={{ fontSize: "0.9rem", color: "var(--text)", fontWeight: 500 }}>{next.title}</span>
+          <a
+            href={`/topic/${next.slug}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              gap: "0.15rem",
+              textDecoration: "none",
+              padding: "0.75rem 1rem",
+              border: "1.5px solid var(--border)",
+              borderRadius: "10px",
+              flex: 1,
+              background: "var(--bg)",
+              boxShadow: "var(--shadow)",
+              transition: "box-shadow 0.15s",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                color: "var(--text-muted)",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Next →
+            </span>
+            <span style={{ fontSize: "0.875rem", color: "var(--text)", fontWeight: 700 }}>
+              {next.title}
+            </span>
           </a>
-        ) : <div style={{ flex: 1 }} />}
+        ) : (
+          <div style={{ flex: 1 }} />
+        )}
       </nav>
     </div>
   );

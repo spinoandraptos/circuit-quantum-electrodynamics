@@ -9,49 +9,50 @@ export default function Sidebar() {
   return (
     <aside
       style={{
-        width: "260px",
-        minWidth: "260px",
+        width: "220px",
+        minWidth: "220px",
         background: "var(--bg-surface)",
-        borderRight: "1px solid var(--border)",
+        borderRight: "2px solid var(--border)",
         height: "100vh",
         position: "sticky",
         top: 0,
         overflowY: "auto",
-        padding: "0",
         display: "flex",
         flexDirection: "column",
       }}
     >
-      {/* Header */}
+      {/* Logo */}
       <div
         style={{
-          padding: "1.5rem 1.25rem 1rem",
-          borderBottom: "1px solid var(--border)",
+          padding: "1.25rem 1rem 1rem",
+          borderBottom: "2px solid var(--border)",
         }}
       >
         <Link href="/" style={{ textDecoration: "none" }}>
           <div
             style={{
               fontFamily: "system-ui, sans-serif",
-              fontSize: "0.65rem",
-              fontWeight: 600,
-              letterSpacing: "0.12em",
+              fontSize: "0.6rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "var(--accent)",
-              marginBottom: "0.25rem",
+              color: "var(--text-muted)",
+              marginBottom: "0.2rem",
             }}
           >
-            Quantum Reference
+            Quantum Engineering 
           </div>
           <div
             style={{
-              fontSize: "1.05rem",
-              fontWeight: 700,
+              fontFamily: "system-ui, sans-serif",
+              fontSize: "1.1rem",
+              fontWeight: 900,
               color: "var(--text)",
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
             }}
           >
-            Circuit QED
+            Bosonic Circuit Quantum Electrodynamics
           </div>
         </Link>
       </div>
@@ -60,17 +61,18 @@ export default function Sidebar() {
       <nav style={{ padding: "0.75rem 0", flex: 1 }}>
         <div
           style={{
-            padding: "0.25rem 1.25rem 0.5rem",
-            fontSize: "0.7rem",
+            padding: "0.25rem 1rem 0.5rem",
+            fontSize: "0.6rem",
             fontFamily: "system-ui, sans-serif",
             textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: "var(--muted)",
-            fontWeight: 600,
+            letterSpacing: "0.18em",
+            color: "var(--text-muted)",
+            fontWeight: 700,
           }}
         >
           Topics
         </div>
+
         {topics.map((topic) => {
           const href = `/topic/${topic.slug}`;
           const active = pathname === href;
@@ -79,26 +81,30 @@ export default function Sidebar() {
               key={topic.slug}
               href={href}
               style={{
-                display: "block",
-                padding: "0.5rem 1.25rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.4rem 0.75rem",
+                margin: "0 0.5rem 0.15rem",
                 textDecoration: "none",
                 fontFamily: "system-ui, sans-serif",
-                fontSize: "0.875rem",
-                color: active ? "var(--accent)" : "#c9d1d9",
-                background: active ? "var(--accent-dim)" : "transparent",
-                borderLeft: active
-                  ? "2px solid var(--accent)"
-                  : "2px solid transparent",
+                fontSize: "0.8rem",
+                fontWeight: active ? 700 : 400,
+                color: active ? "var(--text)" : "var(--text-body)",
+                background: active ? "var(--accent)" : "transparent",
+                border: active ? "1.5px solid var(--accent-dark)" : "1.5px solid transparent",
+                borderRadius: "8px",
+                boxShadow: active ? "var(--shadow)" : "none",
                 transition: "all 0.1s",
               }}
             >
               <span
                 style={{
-                  display: "inline-block",
-                  width: "1.4rem",
-                  color: "var(--muted)",
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
+                  fontFamily: "system-ui, sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  color: active ? "var(--accent-text)" : "var(--text-muted)",
+                  minWidth: "1.2rem",
                 }}
               >
                 {String(topic.order).padStart(2, "0")}
@@ -112,14 +118,26 @@ export default function Sidebar() {
       {/* Footer */}
       <div
         style={{
-          padding: "1rem 1.25rem",
-          borderTop: "1px solid var(--border)",
-          fontSize: "0.7rem",
+          padding: "0.75rem 1rem",
+          borderTop: "1.5px solid var(--border-soft)",
           fontFamily: "system-ui, sans-serif",
-          color: "var(--muted)",
+          color: "var(--text-muted)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.4rem",
         }}
       >
-        All derivations from first principles
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <a
+            href="/about"
+            style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--text-muted)", textDecoration: "none" }}
+          >
+            About Me
+          </a>
+        </div>
+        <div style={{ fontSize: "0.7rem", letterSpacing: "0.03em" }}>
+          © {new Date().getFullYear()} Juncheng Man
+        </div>
       </div>
     </aside>
   );

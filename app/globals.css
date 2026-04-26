@@ -2,71 +2,130 @@
 @import "katex/dist/katex.min.css";
 
 :root {
-  --bg: #0d1117;
-  --bg-surface: #161b22;
-  --bg-card: #1c2128;
-  --border: #30363d;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --accent: #58a6ff;
-  --accent-dim: #1f3a5f;
-  --green: #3fb950;
-  --purple: #bc8cff;
+  --bg: #faf7f0;
+  --bg-surface: #f2ede0;
+  --bg-card: #fffbea;
+  --border: #2d2a24;
+  --border-soft: #d8d0be;
+  --text: #2d2a24;
+  --text-muted: #a09880;
+  --text-body: #5a5449;
+  --accent: #f5e6a3;
+  --accent-dark: #c8b86a;
+  --accent-text: #5a4e1a;
+  --shadow: 2px 2px 0 #c8b86a;
+  --shadow-strong: 3px 3px 0 #2d2a24;
 }
 
 * { box-sizing: border-box; }
 
 body {
   background: var(--bg);
-  color: var(--text);
+  color: var(--text-body);
   font-family: "Georgia", "Times New Roman", serif;
   line-height: 1.75;
   margin: 0;
 }
 
+/* ── Prose ── */
+
 .prose h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
 .prose h2 {
-  font-weight: 600;
-  color: var(--accent);
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
   font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text);
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.5rem;
+  letter-spacing: 0.14em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.prose h2::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: var(--border-soft);
 }
 
 .prose h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text);
   margin-top: 1.75rem;
+  margin-bottom: 0.4rem;
 }
 
-.prose p { color: #c9d1d9; margin-bottom: 1rem; }
-.prose strong { color: var(--text); font-weight: 600; }
+.prose p {
+  color: var(--text-body);
+  margin-bottom: 1rem;
+}
+
+.prose strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.prose em {
+  color: var(--text-body);
+}
+
+.prose a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-dark);
+  text-underline-offset: 3px;
+}
+
+/* ── KaTeX equations ── */
 
 .prose .katex-display {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: 6px;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
+  border: 1.5px solid var(--accent-dark);
+  border-left: 3px solid var(--border);
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
   overflow-x: auto;
 }
 
-.prose .katex-display > .katex { font-size: 1.1em; }
-.prose .katex { color: var(--purple); }
+.prose .katex-display > .katex {
+  font-size: 1.15em;
+  color: var(--text);
+}
+
+.prose .katex-display .katex * {
+  color: var(--text) !important;
+}
+
+/* Inline math */
+.prose .katex {
+  color: var(--accent-text);
+}
+
+/* ── Boxed equations ($$\boxed{...}$$) ── */
+
+.prose .katex-display .boxed,
+.prose .katex-display .mord.boxed {
+  border: 2px solid var(--accent) !important;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+/* ── Tables ── */
 
 .prose table {
   width: 100%;
@@ -74,24 +133,105 @@ body {
   margin: 1.5rem 0;
   font-family: system-ui, sans-serif;
   font-size: 0.875rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .prose th {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--text);
+  color: var(--accent);
   padding: 0.5rem 0.75rem;
   text-align: left;
-  color: var(--muted);
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .prose td {
-  border: 1px solid var(--border);
+  border-top: 1px solid var(--border-soft);
   padding: 0.5rem 0.75rem;
-  color: #c9d1d9;
+  color: var(--text-body);
 }
 
-.prose tr:hover td { background: var(--bg-card); }
+.prose tr:hover td {
+  background: var(--accent);
+  color: var(--text);
+}
+
+/* ── Code ── */
+
+.prose code {
+  font-family: "Courier New", monospace;
+  font-size: 0.85em;
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+  border: 1px solid var(--accent-dark);
+}
+
+.prose pre {
+  background: var(--text);
+  color: var(--accent);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  box-shadow: var(--shadow);
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  color: var(--accent);
+  padding: 0;
+  font-size: 0.9em;
+}
+
+/* ── Blockquote ── */
+
+.prose blockquote {
+  border-left: 3px solid var(--border);
+  background: var(--bg-card);
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0 8px 8px 0;
+  color: var(--text-body);
+  font-style: italic;
+}
+
+/* ── Lists ── */
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-body);
+}
+
+.prose li {
+  margin-bottom: 0.3rem;
+}
+
+.prose ul li::marker {
+  color: var(--accent-dark);
+}
+
+/* ── Tags (for use in MDX) ── */
+
+.tag {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--accent-dark);
+  margin-bottom: 1rem;
+  margin-right: 0.4rem;
+}
