@@ -65,6 +65,10 @@ export default function Sidebar() {
       {/* Nav */}
       <nav style={{ padding: "0.75rem 0", flex: 1 }}>
 
+        <Link href="/" style={navLinkStyle(pathname === "/")}>
+          Home
+        </Link>
+
         {/* Theory */}
         <div style={{ ...sectionLabelStyle, paddingTop: "0.75rem" }}>Theory</div>
         {topics.map((topic) => {
@@ -85,6 +89,9 @@ export default function Sidebar() {
         <Link href="/interactive/calculator" style={navLinkStyle(pathname === "/interactive/calculator")}>
           Calculator
         </Link>
+        <Link href="/interactive/fabrication" style={navLinkStyle(pathname === "/interactive/calculator")}>
+          Fabrication Modeller
+        </Link>
 
         {/* Resources */}
         <div style={sectionLabelStyle}>Resources</div>
@@ -92,7 +99,7 @@ export default function Sidebar() {
           Latest Papers
         </Link>
         <Link href="/resources/links" style={navLinkStyle(pathname === "/resources/links")}>
-          Papers & Links
+          Useful Resources
         </Link>
 
       </nav>
