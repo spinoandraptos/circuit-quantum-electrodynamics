@@ -89,8 +89,11 @@ export default function Sidebar() {
         <Link href="/interactive/calculator" style={navLinkStyle(pathname === "/interactive/calculator")}>
           Calculator
         </Link>
-        <Link href="/interactive/fabrication" style={navLinkStyle(pathname === "/interactive/calculator")}>
+        <Link href="/interactive/fabrication" style={navLinkStyle(pathname === "/interactive/fabrication")}>
           Fabrication Modeller
+        </Link>
+        <Link href="/interactive/bloch" style={navLinkStyle(pathname === "/interactive/bloch")}>
+          Bloch Sphere Visualizer
         </Link>
 
         {/* Resources */}
