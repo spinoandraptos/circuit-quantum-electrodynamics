@@ -243,7 +243,7 @@ export default function ToolsPage() {
     <div>
       {/* Breadcrumb */}
       <div style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "1rem" }}>
-        Circuit QED › <span style={{ color: "var(--text)" }}>Tools</span>
+        Circuit QED › Interactive › <span style={{ color: "var(--text)" }}>Calculator</span>
       </div>
 
       <div style={{ marginBottom: "0.5rem" }}>

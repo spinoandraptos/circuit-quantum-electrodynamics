@@ -89,12 +89,19 @@ export default function Sidebar() {
         <Link href="/interactive/calculator" style={navLinkStyle(pathname === "/interactive/calculator")}>
           Calculator
         </Link>
+        <Link href="/interactive/pulse" style={navLinkStyle(pathname === "/interactive/pulse")}>
+          Pulse Simulator
+        </Link>
         <Link href="/interactive/fabrication" style={navLinkStyle(pathname === "/interactive/fabrication")}>
-          Fabrication Modeller
+          Fabrication Visualiser
         </Link>
         <Link href="/interactive/bloch" style={navLinkStyle(pathname === "/interactive/bloch")}>
-          Bloch Sphere Visualizer
+          Bloch Sphere Visualiser
         </Link>
+                <Link href="/interactive/fridge" style={navLinkStyle(pathname === "/interactive/fridge")}>
+          Dilution Fridge Visualiser
+        </Link>
+
 
         {/* Resources */}
         <div style={sectionLabelStyle}>Resources</div>

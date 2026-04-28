@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LinkCard from "@/components/LinkCard";
 
 export const metadata: Metadata = {
-  title: "Links — Circuit QED",
+  title: "Useful Resources",
 };
 
 interface LinkItem {
@@ -170,7 +170,7 @@ export default function LinksPage() {
     <div>
       {/* Breadcrumb */}
       <div style={{ fontFamily: "system-ui, sans-serif", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "1rem" }}>
-        Circuit QED › <span style={{ color: "var(--text)" }}>Links</span>
+        Circuit QED › Resources › <span style={{ color: "var(--text)" }}>Useful Links</span>
       </div>
 
       <div style={{ marginBottom: "0.5rem" }}>
