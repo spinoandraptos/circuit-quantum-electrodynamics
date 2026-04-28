@@ -298,7 +298,7 @@ const SHAPES: { value: PulseShape; label: string; desc: string }[] = [
 export default function PulseSimulatorPage() {
   const pulseCanvasRef = useRef<HTMLCanvasElement>(null);
   const blochCanvasRef = useRef<HTMLCanvasElement>(null);
-  const darkMode = useRef(window?.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false);
+  const darkMode = useRef(false);
 
   const [params, setParams] = useState<PulseParams>({
     shape: "gaussian",
@@ -334,6 +334,9 @@ export default function PulseSimulatorPage() {
 
   useEffect(() => { redrawPulse(); }, [redrawPulse]);
   useEffect(() => { redrawBloch(); }, [redrawBloch]);
+  useEffect(() => {
+    darkMode.current = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }, []);
 
   const set = (k: keyof PulseParams) => (v: any) =>
     setParams(p => ({ ...p, [k]: v }));
